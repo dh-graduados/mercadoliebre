@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <%- include("../partials/head") %>
+        <title>Mercado Liebre</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100 bg-gray">
+        <%- include("../partials/header") %>
+
+        <main class="flex-fill container py-5">
+            <div class="card mx-auto shadow-lg form-card">
+                <form class="w-100 card-body" action="/login<%= backUrl ? "?backUrl="+backUrl : "" %>" method="POST">
+                    <h5 class="card-title">Login</h5>
+
+                    <% if (locals.loginError) { %>
+                    <p class="alert-danger p-3"><%= locals.loginError %></p>
+                    <% } %>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input class="form-control" id="email" type="email" name="email" />
+                        <% if (locals.formErrors && locals.formErrors.email) { %>
+                        <p class="p-1 text-danger">*Debe usar un email válido</p>
+                        <% } %>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input class="form-control" id="password" type="password" name="password" />
+                        <% if (locals.formErrors && locals.formErrors.password) { %>
+                        <p class="p-1 text-danger">*La contraseña no puede ser vacía</p>
+                        <% } %>
+                    </div>
+                    <button class="d-block btn btn-primary mx-auto mt-5">Enviar</button>
+                </form>
+            </div>
+        </main>
+
+        <%- include("../partials/footer") %>
+    </body>
+</html>

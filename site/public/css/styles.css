@@ -1,0 +1,25 @@
+.product:hover .product-truck {
+    transform: rotate(360deg);
+}
+
+.product-truck {
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    border: 1px solid var(--success-color);
+    border-radius: 50%;
+    color: var(--success-color);
+
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+    background-color: white;
+
+    font-size: large;
+
+    transition: transform 1s;
+}
+
+.form-card {
+    max-width: 540px;
+}

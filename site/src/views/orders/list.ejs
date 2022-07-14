@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <%- include("../partials/head") %>
+        <title>Mis compras</title>
+    </head>
+    <body class="d-flex flex-column vh-100 bg-gray">
+        <%- include("../partials/header") %>
+
+        <main class="flex-fill container py-3">
+            <div class="bg-white border shadow p-4">
+                <% if (orders.length == 0) { %>
+                <div class="text-center p-5">No ha efectuando ninguna compra!</div>
+                <% } %> <% orders.forEach(order=>{%>
+                <div class="border rounded shadow p-3 mb-3">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-fill">
+                            <h2 class="fs-5">Orden: <%= order.id %></h2>
+                        </div>
+                        <p class="fs-5">Total: $ <%= (order.totalPrice).toLocaleString() %></p>
+                        <p class="fs-5 ps-3"
+                            >Productos: <%=
+                            order.products.reduce((acc,p)=>acc+p.OrderProduct.count,0) %></p
+                        >
+                        <p class="fs-5 ps-3">Estado: <%= order.status %></p>
+                    </div>
+                    <% if (order.status == "CREATED" || order.status == "PAYMENT_FAILED") { %>
+                    <div class="d-flex justify-content-end p-3">
+                        <form action="/me/orders/<%= order.id %>/pay/mercadopago" method="POST">
+                            <button class="btn btn-primary">Pagar con Mercado Pago</button></form
+                        >
+                    </div>
+                    <% } %>
+                </div>
+                <% }) %>
+            </div>
+        </main>
+
+        <%- include("../partials/footer") %>
+    </body>
+</html>

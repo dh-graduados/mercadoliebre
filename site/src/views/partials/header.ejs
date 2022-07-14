@@ -1,0 +1,110 @@
+<header class="bg-accent">
+    <nav class="navbar navbar-expand-md navbar-light bg-accent">
+        <div class="container-fluid flex-wrap">
+            <a class="col-6 col-md-4" href="/">
+                <img src="/img/logo-mercado-liebre.svg" alt="Mercadoliebre" />
+            </a>
+            <form class="col-6 col-md-5 p-5" action="/products/search" method="GET">
+                <div class="input-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="search"
+                        placeholder="Buscar productos, marcas y más"
+                        aria-label="Buscar productos, marcas y más"
+                        aria-describedby="button-addon2"
+                    />
+                    <button
+                        class="btn bg-white"
+                        type="submit"
+                        aria-label="Buscar"
+                        id="button-addon2"
+                    >
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
+            <p class="col-12 col-md-3 mt-3 text-center fs-6">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                Comprá en cuotas y sin tarjeta de crédito
+            </p>
+            <div class="d-md-none col-12">
+                <button
+                    class="d-block btn btn-primary mx-auto fs-4"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse col-12" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-7">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ofertas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tiendas Oficiales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Vender</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ayuda</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-7">
+                    <% if (locals.currentUser) { %>
+                    <li class="nav-item">
+                        <p class="nav-link">Hola, <%= currentUser.firstName %>!</p>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/me/orders">
+                            Mis compras
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </a>
+                    </li>
+                    <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">
+                            Crea tu cuenta
+                            <i class="fa-solid fa-address-card"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">
+                            Ingresá
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                        </a>
+                    </li>
+                    <% } %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/me/cart">
+                            Carrito
+                            <span class="position-relative">
+                                <i class="fa-solid fa-cart-shopping"> </i>
+                                <% if (Object.keys(cart).length) { %>
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                >
+                                    <%= Object.keys(cart).length %>
+                                </span>
+                                <% } %>
+                            </span>
+                        </a>
+                    </li>
+                    <% if (locals.currentUser) { %>
+                    <li class="nav-item">
+                        <form action="/logout" method="POST">
+                            <button class="btn" type="submit">
+                                Salir
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            </button>
+                        </form>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

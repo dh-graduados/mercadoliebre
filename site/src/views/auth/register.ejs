@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <%- include("../partials/head") %>
+        <title>Mercado Liebre - Registro</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100 bg-gray">
+        <%- include("../partials/header") %>
+
+        <main class="flex-fill container py-5">
+            <div class="card mx-auto shadow-lg form-card">
+                <form
+                    class="w-100 card-body"
+                    action="/register"
+                    method="POST"
+                    enctype="multipart/form-data"
+                >
+                    <h5 class="card-title">Register</h5>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input class="form-control" id="email" type="email" name="email" value="<%=
+                        getOldValue(locals,"email") %>" /> <% if (locals.formErrors &&
+                        locals.formErrors.email) { %>
+                        <p class="p-1 text-danger"><%= formErrors.email.msg %></p>
+                        <% } %>
+                    </div>
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">Nombre</label>
+                        <input class="form-control" id="firstName" type="text" name="firstName"
+                        value="<%= getOldValue(locals,"firstName") %>" /> <% if (locals.formErrors
+                        && locals.formErrors.firstName) { %>
+                        <p class="p-1 text-danger"><%= formErrors.firstName.msg %></p>
+                        <% } %>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Apellido</label>
+                        <input class="form-control" id="lastName" type="text" name="lastName"
+                        value="<%= getOldValue(locals,"lastName") %>" /> <% if (locals.formErrors &&
+                        locals.formErrors.lastName) { %>
+                        <p class="p-1 text-danger"><%= formErrors.lastName.msg %></p>
+                        <% } %>
+                    </div>
+                    <div class="mb-3">
+                        <label for="profilePic" class="form-label">Imagen de perfil</label>
+                        <input
+                            class="form-control"
+                            id="profilePic"
+                            type="file"
+                            name="profilePic"
+                            accept="image/*"
+                        />
+                        <% if (locals.formErrors && locals.formErrors.profilePic) { %>
+                        <p class="p-1 text-danger"><%= formErrors.profilePic.msg %></p>
+                        <% } %>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input class="form-control" id="password" type="password" name="password" />
+                        <% if (locals.formErrors && locals.formErrors.password) { %>
+                        <p class="p-1 text-danger"><%= formErrors.password.msg %></p>
+                        <% } %>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rePassword" class="form-label">Confirmación de Password</label>
+                        <input
+                            class="form-control"
+                            id="rePassword"
+                            type="password"
+                            name="rePassword"
+                        />
+                        <% if (locals.formErrors && locals.formErrors.rePassword) { %>
+                        <p class="p-1 text-danger"><%= formErrors.rePassword.msg %></p>
+                        <% } %>
+                    </div>
+                    <button class="d-block btn btn-primary mx-auto mt-5">Enviar</button>
+                </form>
+            </div>
+        </main>
+
+        <%- include("../partials/footer") %>
+    </body>
+</html>

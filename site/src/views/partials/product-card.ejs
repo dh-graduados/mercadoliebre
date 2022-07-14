@@ -1,0 +1,13 @@
+<div class="product card shadow-lg h-100">
+    <a href="/products/<%= product.id %>">
+        <img src="<%= product.image %> " class="card-img-top" alt="<%= product.name %> " />
+        <div class="card-body border-top d-flex align-items-center flex-wrap position-relative">
+            <i class="fa-solid fa-truck product-truck"></i>
+            <p class="fs-5 me-2">$ <%= getProductPrice(product) %></p>
+            <% if (product.discount) { %>
+            <p class="fs-6 flex-fill color-success"><%= product.discount %>% Off</p>
+            <% } %>
+            <h3 class="fs-6 col-12"><%= product.name %></h3>
+        </div>
+    </a>
+</div>

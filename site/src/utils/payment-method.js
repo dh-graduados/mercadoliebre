@@ -1,0 +1,3 @@
+module.exports = {
+    MERCADOPAGO: "MERCADOPAGO",
+};

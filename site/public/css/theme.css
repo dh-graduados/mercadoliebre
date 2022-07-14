@@ -1,0 +1,61 @@
+:root {
+    --accent-color: #eac926;
+    --primary-color: #1259c3;
+    --dark-color: #03264c;
+    --gray-color: #666;
+    --lg-gray-color: #ebebeb;
+    --success-color: #39b54a;
+
+    --main-font: "Roboto";
+}
+
+body {
+    font-size: var(--text-body-size) !important;
+    font-family: var(--main-font);
+}
+p,
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    padding: 0;
+}
+
+a,
+a:hover,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.bg-accent {
+    background-color: var(--accent-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.bg-gray {
+    background-color: var(--lg-gray-color) !important;
+}
+
+.color-primary {
+    color: var(--primary-color) !important;
+}
+.color-success {
+    color: var(--success-color) !important;
+}
+.color-success {
+    color: var(--success-color) !important;
+}
+
+/* BOOTSTRAP FIXES */
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0, 0, 0, 0.8) !important;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: rgba(0, 0, 0, 1) !important;
+}

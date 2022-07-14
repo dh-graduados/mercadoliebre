@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <%- include("../partials/head") %>
+        <title><%= product.name %></title>
+    </head>
+    <body class="d-flex flex-column vh-100 bg-gray">
+        <%- include("../partials/header") %>
+
+        <main class="flex-fill container py-3">
+            <div class="row bg-white border shadow p-1">
+                <div class="col col-md-8">
+                    <img
+                        class="d-block mx-auto"
+                        src="<%= product.image %>"
+                        alt="<%= product.name %>"
+                    />
+                    <div class="p-4">
+                        <h2 class="text-lg">Descripción</h2>
+                        <p class="text-md"><%= product.description %></p>
+                    </div>
+                </div>
+                <div class="col col-md-4">
+                    <div class="card shadow h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h1 class="fs-2"><%= product.name %></h1>
+                            <% if (product.discount) { %>
+                            <p class="fs-4 m-0 text-decoration-line-through">
+                                $ <%= product.price %>
+                            </p>
+                            <% } %>
+                            <div class="d-flex align-items-center">
+                                <p class="fs-1 me-2">$ <%= getProductPrice(product) %></p>
+                                <% if (product.discount) { %>
+                                <p class="fs-3 color-success"><%= product.discount %>% Off</p>
+                                <% } %>
+                            </div>
+                            <div class="flex-fill"></div>
+                            <div class="">
+                                <form action="/me/buy/<%= product.id %>" method="POST">
+                                    <button class="fs-5 btn w-100 btn-primary text-white">
+                                        Comprar ahora
+                                    </button>
+                                </form>
+                                <form action="/me/cart/<%= product.id %>" method="POST">
+                                    <button class="fs-5 btn w-100 btn-light text-primary">
+                                        Añadir al carrito
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <%- include("../partials/footer") %>
+    </body>
+</html>
