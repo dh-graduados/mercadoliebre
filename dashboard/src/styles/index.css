@@ -1,0 +1,18 @@
+body {
+    font-family: Roboto;
+}
+p,
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    padding: 0;
+}
+
+a,
+a:hover,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
