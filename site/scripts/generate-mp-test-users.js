@@ -22,6 +22,15 @@ async function getUser(type) {
     return await response.json();
 }
 
+async function fileExists() {
+    try {
+        await fs.stat(outputFilePath);
+        return true;
+    } catch {
+        return false;
+    }
+}
+
 async function main() {
     if (!process.env.MP_SITE_ID || !process.env.MP_ACCESS_TOKEN) {
         console.error(
@@ -34,7 +43,7 @@ async function main() {
         return;
     }
 
-    if (fileExists()) {
+    if (await fileExists()) {
         console.error(
             "!!!Cuidado!!!, ya tenés usuarios generados! Cada cuenta tiene un limite. Para forzar la generación borrá el archivo .json"
         );
