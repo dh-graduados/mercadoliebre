@@ -31,6 +31,11 @@ npx sequelize-cli db:seed:all #Ejecuta los seeders
 
 Usuario de ejemplo:
 
+```
+user: testbuyer@test.com
+pass: user1234
+```
+
 ### Encendiendo el proyecto
 
 ```bash
