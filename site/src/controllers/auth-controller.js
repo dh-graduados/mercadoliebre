@@ -19,13 +19,11 @@ module.exports = {
                 email: req.body.email,
             },
         });
-        if (user) {
-            if (await bcrypt.compare(req.body.password, user.password)) {
-                req.session.loggedUserId = user.id;
+        if (user && (await bcrypt.compare(req.body.password, user.password))) {
+            req.session.loggedUserId = user.id;
 
-                res.redirect(req.query.backUrl ?? "/");
-                return;
-            }
+            res.redirect(req.query.backUrl ?? "/");
+            return;
         }
 
         //Request failed authentication challenge
