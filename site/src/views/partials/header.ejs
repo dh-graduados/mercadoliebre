@@ -39,12 +39,9 @@
                 </button>
             </div>
             <div class="collapse navbar-collapse col-12" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-7">
+                <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-7">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Ofertas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Tiendas Oficiales</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Vender</a>
@@ -52,19 +49,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Ayuda</a>
                     </li>
-                </ul>
+                </ul> -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-7">
                     <% if (locals.currentUser) { %>
                     <li class="nav-item">
                         <p class="nav-link">Hola, <%= currentUser.firstName %>!</p>
                     </li>
+                    <% if (locals.currentUser.role == "BUYER") { %>
                     <li class="nav-item">
                         <a class="nav-link" href="/me/orders">
                             Mis compras
                             <i class="fa-solid fa-basket-shopping"></i>
                         </a>
                     </li>
-                    <% } else { %>
+                    <% }} else { %>
                     <li class="nav-item">
                         <a class="nav-link" href="/register">
                             Crea tu cuenta
@@ -77,7 +75,7 @@
                             <i class="fa-solid fa-right-to-bracket"></i>
                         </a>
                     </li>
-                    <% } %>
+                    <% } %> <% if (!locals.currentUser || locals.currentUser.role == "BUYER") { %>
                     <li class="nav-item">
                         <a class="nav-link" href="/me/cart">
                             Carrito
@@ -93,7 +91,7 @@
                             </span>
                         </a>
                     </li>
-                    <% if (locals.currentUser) { %>
+                    <% } %> <% if (locals.currentUser) { %>
                     <li class="nav-item">
                         <form action="/logout" method="POST">
                             <button class="btn" type="submit">
