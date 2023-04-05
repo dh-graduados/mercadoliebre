@@ -22,8 +22,10 @@
                                 <img class="w-100" src="<%= item.image %>" alt="" />
                             </div>
                             <div class="flex-fill">
-                                <h2 class="fs-4"><%= item.name %></h2>
-                                <form action="/me/cart/<%= item.id %>?_method=delete">
+                                <h2 class="fs-4"
+                                    ><a href="/products/<%= item.id %>"><%= item.name %></a></h2
+                                >
+                                <form action="/me/cart/<%= item.id %>?_method=delete" method="post">
                                     <button class="btn color-primary">Eliminar</button>
                                 </form>
                             </div>
