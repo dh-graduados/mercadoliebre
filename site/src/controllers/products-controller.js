@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Product } = require("../database/models");
 
 module.exports = {
@@ -7,15 +8,16 @@ module.exports = {
         });
     },
     async search(req, res) {
+        const search = req.query.q;
         //search products by name
         const products = await Product.findAll({
             where: {
                 name: {
-                    [Op.like]: `%${req.query.q}%`,
+                    [Op.like]: `%${search}%`,
                 },
             },
         });
 
-        res.render("products/search-result", { products });
+        res.render("products/search-results", { products, search });
     },
 };
