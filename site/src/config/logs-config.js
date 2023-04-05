@@ -10,9 +10,6 @@ module.exports = {
         app.use(morgan("dev"));
 
         if (NODE_ENV == "production") {
-            // CONFIGURE MORGAN FOR DEV
-            app.use(morgan("dev"));
-
             // CREATE A ROTATING WRITE STREAM
             const accessLogStream = rfs.createStream("access.log", {
                 interval: "1d", // rotate daily
