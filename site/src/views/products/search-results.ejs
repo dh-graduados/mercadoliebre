@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <%- include("./partials/head") %>
+        <title>Mercado Liebre</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100 bg-gray">
+        <%- include("./partials/header") %>
+        <main class="flex-fill container py-3">
+            <h2 class="fs-3 py-3">Resultados de la búsqueda</h2>
+            <section class="row">
+                <% products.forEach(product => { %>
+                <div class="col col-md-6 col-lg-3 py-3">
+                    <%- include("partials/product-card", { product }) %>
+                </div>
+
+                <% }); %>
+                <!-- show case for empty result -->
+                <% if (products.length === 0) { %>
+                <div class="col-12">
+                    <div class="alert alert-warning" role="alert">
+                        No se encontraron resultados para la búsqueda:
+                        <strong><%= search %></strong>
+                    </div>
+                </div>
+                <% } %>
+            </section>
+        </main>
+
+        <%- include("./partials/footer") %>
+    </body>
+</html>
